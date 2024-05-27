@@ -20,7 +20,7 @@ namespace MyApp
                 }            
             }
         }
-        public static Int32[] randEntero(int size) {
+        public static Int32[] randEntero(int size) {        // Enteros de 32 bits
             Random rnd = new Random();
             Int32[] arr = new Int32[size];
 
@@ -31,14 +31,21 @@ namespace MyApp
             }
             return arr;
         }
-            
-            
-            
-            
-            
-            
-            
-            
+
+        public static Int64[] randEntero2(int size)
+        {        
+            Random rnd = new Random();
+            Int32[] arr = new Int32[size];
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = rnd.Next();
+
+            }
+            return arr;
+        }
+
+
         static void Main(string[] args)  // Comienazo programa <------------------------------------
         {
 
@@ -47,7 +54,7 @@ namespace MyApp
             bubble(arr);
             TimeSpan tiempo = DateTime.Now - inicio;
 
-            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D3}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds);
+            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds);
             Console.ReadKey();
            
         }
