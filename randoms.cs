@@ -54,6 +54,18 @@ namespace randoms
             }
             return arr;
         }
+        public static string[] rand5(int a)
+        {        
+            Random rnd = new Random();
+            string[] arr = new string[a];
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = rnd.Next(10000000,99000000).ToString();
+
+            }
+            return arr;
+        }
 
 
     }
