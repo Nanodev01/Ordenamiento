@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ordenamiento
 {
-    internal class Or
+    public class Or
     {
         public static void bubble(int[] arr)
         {
