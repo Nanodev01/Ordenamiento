@@ -78,8 +78,20 @@ namespace randoms
 
             for (int i = 0; i < arr.Length; i++)
             {
-                arr[i] = rnd.Next(10000000,99000000).ToString();
+                arr[i] = rnd.Next(10000000,99999999).ToString();
 
+            }
+            return arr;
+        }
+        public static string[] rand7(int a)
+        {        
+            Random rnd = new Random();
+            string[] arr = new string[a];
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                double r = rnd.NextDouble() * (9.9999999 - 1.999999) + 1.999999;
+                arr[i] = r.ToString();
             }
             return arr;
         }

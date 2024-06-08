@@ -9,7 +9,7 @@ namespace ordenamiento
 {
     public class Or
     {
-        public static void bubble(int[] arr)
+        public static void Bubble(int[] arr)
         {
             // ordenamiento bubble sort
             int n = arr.Length;
@@ -119,7 +119,7 @@ namespace ordenamiento
 			}
 		}		
 		//quick sort iterativo
-		public static void QuickSortIterative(int[] array)
+		public static void QuickSortIterativo(int[] array)
 		{
 			int n = array.Length;
 			int[] stack = new int[n];
@@ -196,7 +196,7 @@ namespace ordenamiento
 	public class Or64
 	{
 
-        public static void bubble(long[] arr)
+        public static void Bubble(long[] arr)
         {
             // ordenamiento bubble sort
             int n = arr.Length;
@@ -306,7 +306,7 @@ namespace ordenamiento
 			}
 		}		
 		//quick sort iterativo
-		public static void QuickSortIterative(long[] array)
+		public static void QuickSortIterativo(long[] array)
 		{
 			int n = array.Length;
 			long[] stack = new long[n];
@@ -383,8 +383,9 @@ namespace ordenamiento
 
 	}
 
-	public class Dob{
-        public static void bubble(double[] arr)
+	public class Dob
+	{
+        public static void Bubble(double[] arr)
         {
             // ordenamiento bubble sort
             int n = arr.Length;
@@ -494,7 +495,7 @@ namespace ordenamiento
 			}
 		}		
 		//quick sort iterativo
-		public static void QuickSortIterative(double[] array)
+		public static void QuickSortIterativo(double[] array)
 		{
 			int n = array.Length;
 			int[] stack = new int[n];
@@ -568,8 +569,9 @@ namespace ordenamiento
     	}
 
 	}
-	public class Dob128{
-        public static void bubble(float[] arr)
+	public class Dob128
+	{
+        public static void Bubble(float[] arr)
         {
             // ordenamiento bubble sort
             int n = arr.Length;
@@ -679,7 +681,7 @@ namespace ordenamiento
 			}
 		}		
 		//quick sort iterativo
-		public static void QuickSortIterative(float[] array)
+		public static void QuickSortIterativo(float[] array)
 		{
 			int n = array.Length;
 			int[] stack = new int[n];
@@ -754,5 +756,194 @@ namespace ordenamiento
 
 
 	}
+	public class Str
+	{
+		public static void Bubble(string[] arr)
+		{
+			// Ordenamiento bubble sort
+			int n = arr.Length;
+			for (int i = 0; i < n - 1; i++)
+			{
+				for (int j = i + 1; j < n; j++)
+				{
+					if (arr[j].CompareTo(arr[i]) < 0)
+					{
+						string aux = arr[i];
+						arr[i] = arr[j];
+						arr[j] = aux;
+					}
+				}
+			}
+		}
 
+		public static void MergeSort(string[] arr)
+		{
+			MergeSort(arr, 0, arr.Length - 1);
+		}
+
+		static void MergeSort(string[] arr, int left, int right)
+		{
+			if (left < right)
+			{
+				int middle = (left + right) / 2;
+
+				MergeSort(arr, left, middle);
+				MergeSort(arr, middle + 1, right);
+
+				Merge(arr, left, middle, right);
+			}
+		}
+
+		static void Merge(string[] arr, int left, int middle, int right)
+		{
+			int n1 = middle - left + 1;
+			int n2 = right - middle;
+
+			string[] L = new string[n1];
+			string[] R = new string[n2];
+
+			for (int o = 0; o < n1; ++o)
+			{
+				L[o] = arr[left + o];
+			}
+
+			for (int z = 0; z < n2; ++z)
+			{
+				R[z] = arr[middle + 1 + z];
+			}
+
+			int i = 0, j = 0;
+			int k = left;
+
+			while (i < n1 && j < n2)
+			{
+				if (L[i].CompareTo(R[j]) <= 0)
+				{
+					arr[k] = L[i];
+					i++;
+				}
+				else
+				{
+					arr[k] = R[j];
+					j++;
+				}
+				k++;
+			}
+
+			while (i < n1)
+			{
+				arr[k] = L[i];
+				i++;
+				k++;
+			}
+
+			while (j < n2)
+			{
+				arr[k] = R[j];
+				j++;
+				k++;
+			}
+		}
+
+		public static void QuickSort(string[] array, int low, int high)
+		{
+			if (low < high)
+			{
+				string pivot = array[high];
+				int i = low - 1;
+
+				for (int j = low; j < high; j++)
+				{
+					if (array[j].CompareTo(pivot) <= 0)
+					{
+						i++;
+						string temp = array[i];
+						array[i] = array[j];
+						array[j] = temp;
+					}
+				}
+
+				string temp1 = array[i + 1];
+				array[i + 1] = array[high];
+				array[high] = temp1;
+
+				int pivotIndex = i + 1;
+
+				QuickSort(array, low, pivotIndex - 1);
+				QuickSort(array, pivotIndex + 1, high);
+			}
+		}	
+
+		public static void QuickSortIterativo(string[] array)
+		{
+			int n = array.Length;
+			int[] stack = new int[n];
+			int top = -1;
+
+			stack[++top] = 0;
+			stack[++top] = n - 1;
+
+			while (top >= 0)
+			{
+				int high = stack[top--]; 
+				int low = stack[top--];
+
+				string pivot = array[high];
+				int i = low - 1;
+
+				for (int j = low; j < high; j++)
+				{
+					if (array[j].CompareTo(pivot) <= 0)
+					{
+						i++;
+						string temp = array[i];
+						array[i] = array[j];
+						array[j] = temp;
+					}
+				}
+
+				string temp1 = array[i + 1];
+				array[i + 1] = array[high];
+				array[high] = temp1;
+
+				int pivotIndex = i + 1;
+
+				if (pivotIndex - 1 > low)
+				{
+					stack[++top] = low;
+					stack[++top] = pivotIndex - 1;
+				}
+
+				if (pivotIndex + 1 < high)
+				{
+					stack[++top] = pivotIndex + 1;
+					stack[++top] = high;
+				}
+			}
+		}
+
+
+		public static void Seleccion(string[] arr)
+		{
+			int n = arr.Length;
+
+			for (int i = 0; i < n - 1; i++)
+			{
+				int minIndex = i;
+
+				for (int j = i + 1; j < n; j++)
+				{
+					if (arr[j].CompareTo(arr[minIndex]) < 0)
+					{
+						minIndex = j;
+					}
+				}
+
+				string temp = arr[i];
+				arr[i] = arr[minIndex];
+				arr[minIndex] = temp;
+			}
+		}
+	}
 }
+ 
