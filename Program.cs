@@ -35,57 +35,300 @@ namespace MyApp
 
             switch(opc){
 
-                case '1': 
+                case '1': // Numeros Enteros <----
 
                     Menu();
-                    // Agregar swich (5 casos)
-                    Console.WriteLine("Ingrese la cantidad de datos que desea ordenar"); //pasar arriba del switch
-                    int num = Convert.ToInt32(Console.ReadLine());
-                    
-                    DateTime inicio = DateTime.Now;
-                    int[] arr = Rnd.rand1(num);
-                    Or.bubble(arr);
-                    TimeSpan tiempo = DateTime.Now - inicio;
-                    // Bucle para mostrar los datos del array
-                    // for(int i = 0; i < arr.Length; i++)
-                    // {
-                    //     Console.WriteLine("{0}", arr[i]);
+                    opc = Console.ReadKey().KeyChar;
+                    Console.Clear();
+                    switch(opc)
+                    {
+                        case '1': // bubble sort
 
-                    // }
-                    Console.WriteLine("El arreglo tiene {0} elementos", arr.Length);
-                    Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
-                    Console.ReadKey();
+                            //int 32
+                            Console.WriteLine("Ingrese la cantidad de datos que desea ordenar"); //pasar arriba del switch
+                            int num = Convert.ToInt32(Console.ReadLine());
+                            
+                            DateTime inicio = DateTime.Now;
+                            int[] arr = Rnd.rand1(num);
+                            Or.bubble(arr);
+                            TimeSpan tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            
+                            Console.WriteLine("Desea continuar con los enteros de 64 bits?");
+                            Console.WriteLine("1.- Si");
+                            Console.WriteLine("2.- No");
+                            int op = Convert.ToInt32(Console.ReadLine());
 
+                            if(op == 1)  // agregar a los otros ejemplos
+                            {
+                                //int 64 ----- long
+                                inicio = DateTime.Now;
+                                long[] arrL = Rnd.rand2(num);
+                                Or64.bubble(arrL);
+                                tiempo = DateTime.Now - inicio;
+                                Console.WriteLine("El arreglo tiene {0} elementos", arrL.Length);
+                                Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);                                
+
+                            }
+
+
+                            // se podria quitar;
+                           Console.ReadKey(); 
+                        break;
+
+                        case '2': //Merge sort (recursivo)
+
+                            Console.WriteLine("Ingrese la cantidad de datos que desea ordenar"); //pasar arriba del switch
+                            num = Convert.ToInt32(Console.ReadLine());
+                            
+                            inicio = DateTime.Now;
+                            int[] arr1 = Rnd.rand1(num);
+                            Or.MergeSort(ref arr1, 0, num - 1);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr1.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            
+                            //int 64 ----- long
+
+                            inicio = DateTime.Now;
+                            long[] arr1L = Rnd.rand2(num);
+                            Or64.MergeSort(ref arr1L,0, num - 1);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr1L.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            
+                            Console.ReadKey();
+                        break;
+
+                        case '3':// quick sort (recursivo)
+                            Console.WriteLine("Ingrese la cantidad de datos que desea ordenar"); //pasar arriba del switch
+                            num = Convert.ToInt32(Console.ReadLine());
+                            
+                            inicio= DateTime.Now;
+                            int[] arr2 = Rnd.rand1(num);
+                            Or.QuickSort(arr2, 0, num);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr2.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+
+                            //int 64 ----- long
+
+                            inicio = DateTime.Now;
+                            long[] arr2L = Rnd.rand2(num);
+                            Or64.QuickSort(arr2L, 0, num);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr2L.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            
+                            Console.ReadKey();
+
+                        break;
+                        
+                        case '4':// quick sort (iterativo)
+                            Console.WriteLine("Ingrese la cantidad de datos que desea ordenar"); //pasar arriba del switch
+                            num = Convert.ToInt32(Console.ReadLine());
+                            
+                            inicio= DateTime.Now;
+                            int[] arr3 = Rnd.rand1(num);
+                            Or.QuickSortIterative(arr3);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr3.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            Console.ReadKey();
+                            
+                            //quick sort 64
+                            inicio = DateTime.Now;
+                            long[] arr3L = Rnd.rand2(num);
+                            Or64.QuickSortIterative(arr3L);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr3L.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            
+
+                        break;
+
+                        case '5':// seleccion
+                            Console.WriteLine("Ingrese la cantidad de datos que desea ordenar"); //pasar arriba del switch
+                            num = Convert.ToInt32(Console.ReadLine());
+                            
+                            inicio= DateTime.Now;
+                            int[] arr4 = Rnd.rand1(num);
+                            Or.Seleccion(arr4);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("(Selection sort) El arreglo tiene {0} elementos", arr4.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            Console.ReadKey();
+
+                            inicio = DateTime.Now;
+                            long[] arr4L = Rnd.rand2(num);
+                            Or64.Seleccion(arr4L);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr4L.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            
+                            
+
+                        break;
+
+                        default:
+                                Console.WriteLine("Error = Dato no valido");
+
+                        break;
+                    }
                 break; 
-                case '2': 
-                    DateTime inicio1 = DateTime.Now;
-                    // int[] arr1 = Rnd.rand1(num1); Arreglar
-                    Or.bubble(arr1);
-                    TimeSpan tiempo1 = DateTime.Now - inicio1;
-                    Console.WriteLine("El arreglo tiene {0} elementos", arr1.Length);
-                    Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo1.Hours, tiempo1.Minutes, tiempo1.Seconds, tiempo1.Milliseconds);
-                    Console.ReadKey();
+                case '2': // Numeros Reales <--------
+
+                    Menu();
+                    opc = Console.ReadKey().KeyChar;
+                    Console.Clear();
+                    switch(opc)
+                    {
+                        case '1': // bubble sort
+
+                            //reales 32 bits
+                            Console.WriteLine("Ingrese la cantidad de datos que desea ordenar"); //pasar arriba del switch
+                            int num = Convert.ToInt32(Console.ReadLine());
+                            
+                            DateTime inicio = DateTime.Now;
+                            double[] arr = Rnd.rand3(num);
+                            Dob.bubble(arr);
+                            TimeSpan tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            
+                            Console.WriteLine("Desea continuar con los enteros de 64 bits?");
+                            Console.WriteLine("1.- Si");
+                            Console.WriteLine("2.- No");
+                            int op = Convert.ToInt32(Console.ReadLine());
+
+                            if(op == 1)  // agregar a los otros ejemplos
+                            {
+                                //reales de 128 ----- float
+                                inicio = DateTime.Now;
+                                long[] arrL = Rnd.rand2(num);
+                                Or64.bubble(arrL);
+                                tiempo = DateTime.Now - inicio;
+                                Console.WriteLine("El arreglo tiene {0} elementos", arrL.Length);
+                                
+                                Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);                                
+
+                            }
+
+
+                            // se podria quitar;
+                           Console.ReadKey(); 
+                        break;
+
+                        case '2': //Merge sort (recursivo)
+
+                            Console.WriteLine("Ingrese la cantidad de datos que desea ordenar"); //pasar arriba del switch
+                            num = Convert.ToInt32(Console.ReadLine());
+                            
+                            inicio = DateTime.Now;
+                            double[] arr1 = Rnd.rand3(num);
+                            Dob.MergeSort(ref arr1, 0, num - 1);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr1.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            
+                            //reales 128 ----- float
+
+                            inicio = DateTime.Now;
+                            float[] arr1L = Rnd.rand4(num);
+                            Dob128.MergeSort(ref arr1L,0, num - 1);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr1L.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            
+                            Console.ReadKey();
+                        break;
+
+                        case '3':// quick sort (recursivo)
+                            Console.WriteLine("Ingrese la cantidad de datos que desea ordenar"); //pasar arriba del switch
+                            num = Convert.ToInt32(Console.ReadLine());
+                            
+                            inicio= DateTime.Now;
+                            double[] arr2 = Rnd.rand3(num);
+                            Dob.QuickSort(arr2, 0, num);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr2.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+
+                            //reales 128 ----- float
+
+                            inicio = DateTime.Now;
+                            float[] arr2L = Rnd.rand4(num);
+                            Dob128.QuickSort(arr2L, 0, num);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr2L.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            
+                            Console.ReadKey();
+
+                        break;
+                        
+                        case '4':// quick sort (iterativo)
+                            Console.WriteLine("Ingrese la cantidad de datos que desea ordenar"); //pasar arriba del switch
+                            num = Convert.ToInt32(Console.ReadLine());
+                            
+                            inicio= DateTime.Now;
+                            double[] arr3 = Rnd.rand3(num);
+                            Dob.QuickSortIterative(arr3);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr3.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            Console.ReadKey();
+                            
+                            //quick sort 64
+                            inicio = DateTime.Now;
+                            float[] arr3L = Rnd.rand4(num);
+                            Dob128.QuickSortIterative(arr3L);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr3L.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            
+
+                        break;
+
+                        case '5':// seleccion
+                            Console.WriteLine("Ingrese la cantidad de datos que desea ordenar"); //pasar arriba del switch
+                            num = Convert.ToInt32(Console.ReadLine());
+                            
+                            inicio= DateTime.Now;
+                            double[] arr4 = Rnd.rand3(num);
+                            Dob.Seleccion(arr4);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("(Selection sort) El arreglo tiene {0} elementos", arr4.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            Console.ReadKey();
+
+                            inicio = DateTime.Now;
+                            float[] arr4L = Rnd.rand4(num);
+                            Dob128.Seleccion(arr4L);
+                            tiempo = DateTime.Now - inicio;
+                            Console.WriteLine("El arreglo tiene {0} elementos", arr4L.Length);
+                            Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2},{3:d2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds, tiempo.Milliseconds);
+                            
+                            
+
+                        break;
+
+                        default:
+                                Console.WriteLine("Error = Dato no valido");
+
+                        break;
+                    }
+
                 break;                 
-                case '3': 
+                case '3': // string
+
 
                 break; 
                 default:
                 break; 
             }
-            
-            // DateTime inicio = DateTime.Now;
-            // int[] arr = Rnd.rand1(5000000);
-            // Or.MergeSort(ref arr, 0, arr.Length - 1);
-            // TimeSpan tiempo = DateTime.Now - inicio;
-            // // for(int i = 0; i < arr.Length; i++)
-            // // {
-            // //     Console.WriteLine("{0}", arr[i]);
-
-            // // }
-            // Console.WriteLine("El arreglo tiene {0} elementos", arr.Length);
-            // Console.WriteLine("Tiempo elapsado: {0:D1}:{1:D2}:{2:D2}", tiempo.Hours, tiempo.Minutes, tiempo.Seconds);
-            // Console.ReadKey();
-           
+             
         }
     }
 }

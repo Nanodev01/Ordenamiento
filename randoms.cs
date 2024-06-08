@@ -34,7 +34,19 @@ namespace randoms
             }
             return arr;
         }
-        public static float[] rand3(int a)
+        public static double[] rand3(int a)
+        {        
+            Random rnd = new Random();
+            double[] arr = new double[a];
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = rnd.Next();
+
+            }
+            return arr;
+        }
+        public static float[] rand4(int a)
         {        
             Random rnd = new Random();
             float[] arr = new float[a];
@@ -47,7 +59,7 @@ namespace randoms
             return arr;
         }
 
-        public static decimal[] rand4(int a)
+        public static decimal[] rand5(int a)
         {        
             Random rnd = new Random();
             decimal[] arr = new decimal[a];
@@ -59,7 +71,7 @@ namespace randoms
             }
             return arr;
         }
-        public static string[] rand5(int a)
+        public static string[] rand6(int a)
         {        
             Random rnd = new Random();
             string[] arr = new string[a];
